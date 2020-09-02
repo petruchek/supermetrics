@@ -26,16 +26,18 @@ Since the exact format of the stats output was not detailed (other than being a 
 
 2. Task says API will provide "*1000 posts over a six month period*", but I didn't like the idea of relying on this magic **6** constant. Here's the quote from the code in `Analyzer.php`:
 
-   	This is tricky. Task says "1000 posts over a six month period". But what if we get 1000 posts within last month only? 
-   	Hard-coding 6 seems to be too optimistic, so instead we record the earliest post and the latest post from the feed.
-   	Then we calculate an approximate (and decimal) number of months between two timestamps ($months).
-   	So then we divide number or posts by $months.
-   	(during development I got data feed that led to $months being slightly greater than 6.2)
-   	This way this metrics depends on data only, not on an external promise.
+   ```
+   This is tricky. Task says "1000 posts over a six month period". But what if we get 1000 posts within last month only? 
+   Hard-coding 6 seems to be too optimistic, so instead we record the earliest post and the latest post from the feed.
+   Then we calculate an approximate (and decimal) number of months between two timestamps ($months).
+   So then we divide number or posts by $months.
+   (during development I got data feed that led to $months being slightly greater than 6.2)
+   This way this metrics depends on data only, not on an external promise.
+   ```
 
 ## Date format
 
-Whenever required, script generates months' and weeks' number according to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Examples:
+Whenever required, script generates months' and weeks' numbers according to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Examples:
 
 - week: `2020W35`
 - month: `2020-09`
